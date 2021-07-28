@@ -18,28 +18,33 @@ function populateTodoList(todos) {
 
     deleteButtonFunction(listLiTag, divBlock);
   } 
-
-  document
-    .getElementById("primary-check-button")
-    .addEventListener("click", checkButtonFuntion);
 }
 
-function checkButtonFuntion() {
-  let list = document.getElementById("todo-list"); 
-  // let listItems = document.getElementsByClassName("list-group-item");
- for (let i = 0; i < list.length; i++) {
-    if (list[i].innerText.style.color = "none") {
-      list[i].innerText.style.color = "red";
-    }
-    return (list[i].innerText.style.color = "none");
- }
-}
+// function checkButtonFunction() {
+//   let list = document.getElementById("todo-list"); 
+
+//   // let listItems = document.getElementsByClassName("list-group-item");
+//  for (let i = 0; i < list.length; i++) {
+//     if (list[i].innerText.style.color = "none") {
+//       list[i].innerText.style.color = "red";
+//     }
+//     return (list[i].innerText.style.color = "none");
+//  }
+// }
 
 // Creating the check button.
 function checkButtonFunction(listLiTag) {
   let checkButton = document.createElement("button");
+  checkButton.addEventListener(
+    "click",
+    () =>
+      (listLiTag.style.textDecoration === "line-through"
+        ? (listLiTag.style.textDecoration = "none")
+        : (listLiTag.style.textDecoration = "line-through"))
+  );
   checkButton.setAttribute("id", "primary-check-button");
   listLiTag.appendChild(checkButton);
+  console.log(listLiTag);
   let divBlock = document.createElement('div');
   listLiTag.appendChild(divBlock);
   let checkSpanTag = document.createElement("span");
@@ -55,7 +60,19 @@ function checkButtonFunction(listLiTag) {
 
 // Creating the delete button.
 function deleteButtonFunction(listLiTag, divBlock) {
-  let deleteButton = document.createElement("button");
+  let deleteButton = document.createElement("button");  
+  deleteButton.addEventListener("click", () => {
+  // const newArray = todos.filter((todo) => {
+  //     if (todo.task === listLiTag.innerText) {
+  //       return false;
+  //     }else {
+  //       return true;
+  //     }
+  //   }); 
+  const newArray = todos.filter(todos)
+    populateTodoList(newArray);
+  })
+
   deleteButton.setAttribute("id", "primary-delete-button");
   listLiTag.appendChild(deleteButton);
   let deleteSpanTag = document.createElement("span");
@@ -84,7 +101,12 @@ function addNewTodo(event) {
 // This button adds a new to-do to the list of todos array when clicked.
 document.getElementById("btn-primary").addEventListener('click', addNewTodo);
 
+let getCheckBtnClass = document.getElementsByClassName("rounded-pill-0");
+
+console.log(getCheckBtnClass);
 // Advanced challenge: Write a fucntion that checks the todos in the todo list and deletes the completed ones (we can check which ones are completed by seeing if they have the line-through styling applied or not).
 function deleteAllCompletedTodos() {
   // Write your code here...
 }
+
+populateTodoList(todos);
