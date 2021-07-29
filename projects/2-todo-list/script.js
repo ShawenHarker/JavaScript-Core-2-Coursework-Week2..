@@ -20,18 +20,6 @@ function populateTodoList(todos) {
   } 
 }
 
-// function checkButtonFunction() {
-//   let list = document.getElementById("todo-list"); 
-
-//   // let listItems = document.getElementsByClassName("list-group-item");
-//  for (let i = 0; i < list.length; i++) {
-//     if (list[i].innerText.style.color = "none") {
-//       list[i].innerText.style.color = "red";
-//     }
-//     return (list[i].innerText.style.color = "none");
-//  }
-// }
-
 // Creating the check button.
 function checkButtonFunction(listLiTag) {
   let checkButton = document.createElement("button");
